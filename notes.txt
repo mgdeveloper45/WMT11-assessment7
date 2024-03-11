@@ -1,0 +1,127 @@
+Timing Information:
+-------------------
+
+Extra Large Array
+-----------------
+Time to run code with push():     push 7.725895 ms
+Time to run code with unshift():  unshift 967.103787 ms
+
+Large Array
+-----------
+Time to run code with push():     push 902.407 μs
+Time to run code with unshift():  unshift 8.785557 ms
+
+Medium Array
+------------
+Time to run code with push():     push 221.264 μs
+Time to run code with unshift():  unshift 355.054 μs
+
+Small Array
+-----------
+Time to run code with push():     push 132.86 μs
+Time to run code with unshift():  unshift 106.585 μs
+
+Tiny Array
+----------
+Time to run code with push():     push 115.27 μs
+Time to run code with unshift():  unshift 91.99 μs
+
+
+4. When running these functions, I observed a pattern in their 
+   scalability based on the size of the input arrays. As the size 
+   of the input array increases, the time taken to execute each 
+   function also increases. Both functions iterate through the 
+   entire arrays, with a linear time complexity. The doublerAppend 
+   function scales better than the doublerInsert function, it is more 
+   consistent across varying input sizes.
+
+5. The doublerInsert function scales worse compared to the doublerAppend 
+   function. Inserting elements at the front of an array (unshift method) 
+   is less efficient compared to appending elements at the end of an array 
+   (push method). Inserting elements at the beginning of an array requires 
+   shifting all existing elements to make room for the new element, with a 
+   time complexity of O(n) for each insertion. Appending elements at the end 
+   of an array has a time complexity of O(1).
+
+Step 2: Write code
+
+1) Sum To Zero
+
+<--- Brute Force --->
+function addToZero(arr) {
+    for(let i=0; i<arr.length; i++) {
+        for(let j=i+1; j<arr.length; j++) {
+            if(arr[i] + arr[j] === 0) {
+              return true
+            }
+        }
+    }
+  return false
+}
+
+<--- Using A Set --->
+function addToZero(arr) {
+    let numSet = new Set();
+
+    for (let num of numbers) {
+        if (numSet.has(-num)) return true;
+        else numSet.add(num);
+    }
+    return false;
+}
+
+2) Unique Characters
+
+function hasUniqueChars(word) {
+  let charSet = new Set();
+
+  for(let char of word) {
+    if(charSet.has(char)) true;
+    else charSet.add(char);
+  }
+  return false;
+}
+
+3) Pangram Sentence
+
+function isPangram(sentence) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+    for (let char of alphabet) {
+        if (!sentence.toLowerCase().includes(char)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+4) Longest Word
+
+function findLongestWord(words) {
+    let longestWordLength = 0;
+
+    for (let word of words) {
+        if (word.length > longestWordLength) {
+            longestWordLength = word.length;
+        }
+    }
+    return longestWordLength;
+}
+
+Extra Credit:
+
+1) Sum To Zero
+Space complexity 0(n) number of 
+elements in the input array
+
+2) Unique Characters
+Space complexity 0(n) number of
+characters in the word input
+
+3) Pangram Sentence
+Space complexity 0(1) constant space
+for the alphabet string
+
+4) Longest Word 
+Space complexity 0(1) constant space 
+regardless of the size of the input
